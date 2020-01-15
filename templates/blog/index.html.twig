@@ -5,40 +5,21 @@
 
 {% block body %}
 <section class="articles">
+
+{% for article in articles %}
         <article>
             <div class="content">
-            <h2>Titre de l'article</h2>
-                <img src="https://via.placeholder.com/350x150" alt="">
-                <p>test 1</p>
-                <p>test2</p>
+            <div class="meradata">Ecrit le {{article.createAt | date('d/m/Y')}} à {{ article.createAt | date('H:i')}}</div>
+            <h2>{{ article.title }}</h2>
+                <img src={{ article.image }} alt="">
+                <p>{{ article.content }}</p>
 
-                <a href="{{path('blog_show')}}" class="btn btn-info">Lire la suite</a>
+                <a href="{{path('blog_show', {'id' : article.id})}}" class="btn btn-info">Lire la suite</a>
             </div>
         </article>
+        <br>
+{% endfor %}
 </section>
 
-<section class="articles">
-        <article>
-            <div class="content">
-            <h2>Titre de l'article</h2>
-                <img src="https://via.placeholder.com/350x150" alt="">
-                <p>test 1</p>
-                <p>test2</p>
 
-                <a href="{{path('blog_show')}}" class="btn btn-info">Lire la suite</a>
-            </div>
-        </article>
-</section>
-
-<section class="articles">
-        <article>
-            <div class="content">
-            <h2>Titre de l'article</h2>
-                <img src="https://via.placeholder.com/350x150" alt="">
-                <p>test 1</p>
-                <p>test2</p>
-                <a href="{{ path('blog_show') }}" class="btn btn-info">Lire la suite</a>
-            </div>
-        </article>
-</section>
 {% endblock %}

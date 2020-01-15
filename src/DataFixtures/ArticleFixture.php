@@ -10,8 +10,17 @@ class ArticleFixture extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        // $article = new Article();
-        // $manager->persist($article);
+        for($i = 1; $i <= 10; $i++)
+        {
+            $article = new Article();
+            
+            $article->setTitle("Titre de l'article n° $i")
+                    ->setContent("Le contenue de l'article $i")
+                    ->setImage("https://via.placeholder.com/350x150")
+                    ->setCreateAt(new \DateTime());
+
+            $manager->persist($article);
+        }
 
         $manager->flush();
     }

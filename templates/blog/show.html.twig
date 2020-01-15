@@ -1,13 +1,13 @@
 ﻿{% extends "base.html.twig" %}
 {% block body %}
             <article>
-                <div class="content">
-                    <h2>Titre de l'article</h2>
-                    <img src="https://via.placeholder.com/350x150" alt="">
-                    <p>test 1</p>
-                    <p>test 2</p>
-                </div>
-                <hr>
-                <p>Test3</p>
-            </article>
+            
+            <div class="meradata">Ecrit le {{article.createAt | date('d/m/Y')}} à {{ article.createAt | date('H:i')}}</div>
+            <h2>{{ article.title }}</h2>
+            <div class="content">
+                <img src={{ article.image }} alt="">
+                <br>
+               {{ article.content | raw}}
+            </div>
+        </article>
 {% endblock %}
