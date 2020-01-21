@@ -9,5 +9,6 @@
                 <br>
                {{ article.content | raw}}
             </div>
+            <a href="{{path('blog_edit', {'id' : article.id})}}"><button class="btn btn-info">Modifier l'article</button></a>
         </article>
 {% endblock %}

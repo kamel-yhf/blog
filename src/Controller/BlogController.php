@@ -47,7 +47,6 @@ class BlogController extends AbstractController
         if(!$article){
             $article = new Article();
         }
-        
 
         $form = $this->createFormBuilder($article)
                      ->add('title')
