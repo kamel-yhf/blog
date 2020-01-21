@@ -3,7 +3,13 @@
 {% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-    <h1>Creation d'un Article !</h1>
+
+    {% if editMode %}
+             <h1>Modifier l'Article !</h1>
+        {% else %}
+             <h1>Creation d'un Article !</h1>
+        {% endif %}
+   
     
     {{ form_start(formArticle) }}
 
@@ -11,7 +17,13 @@
     {{ form_row(formArticle.content, {'attr':{'placeholder': "contenu de l'article"}}) }}
     {{ form_row(formArticle.image, {'attr':{'placeholder': "URL de l'image"}}) }}
 
-    <button type="submit" class="btn btn-info">Ajouter l'article</button>
+    <button type="submit" class="btn btn-info">
+        {% if editMode %}
+            Enregistrer les modification
+        {% else %}
+            Ajouter l'article
+        {% endif %}
+    </button>
 
     {{ form_end(formArticle) }}
 
