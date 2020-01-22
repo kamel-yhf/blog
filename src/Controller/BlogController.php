@@ -49,6 +49,7 @@ class BlogController extends AbstractController
         }
 
         $form = $this->createFormBuilder($article)
+                     ->add('categorie')
                      ->add('title')
                      ->add('content')
                      ->add('image')
