@@ -5,9 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+
 use App\Entity\Article;
+use App\Entity\Category;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 
 
 
@@ -44,11 +49,7 @@ class BlogController extends AbstractController
             $article = new Article();
         }
 
-        $form = $this->createFormBuilder($article)
-                     ->add('title')
-                     ->add('content')
-                     ->add('image')
-                     ->getForm();
+        $form = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);
 
