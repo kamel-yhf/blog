@@ -55,7 +55,7 @@ class BlogController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             if(!$article->getId())
             {
-                $article->setCreateAt(new \DateTime());
+                $article->setCreatedAt(new \DateTime());
             }
             
             $manager->persist($article);

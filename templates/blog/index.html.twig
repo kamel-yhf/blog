@@ -9,7 +9,7 @@
 {% for article in articles %}
         <article>
             <div class="content">
-            <div class="meradata">Ecrit le {{article.createAt | date('d/m/Y')}} à {{ article.createAt | date('H:i')}}</div>
+            <div class="meradata">Ecrit le {{article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}}</div>
             <h2>{{ article.title }}</h2>
                 <img src={{ article.image }} alt="">
                 <p>{{ article.content }}</p>
