@@ -9,10 +9,6 @@ use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
 
 
 class BlogController extends AbstractController
@@ -49,7 +45,6 @@ class BlogController extends AbstractController
         }
 
         $form = $this->createFormBuilder($article)
-                     ->add('categorie')
                      ->add('title')
                      ->add('content')
                      ->add('image')
