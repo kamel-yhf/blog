@@ -1,36 +1,40 @@
 ﻿{% extends "base.html.twig" %}
 {% block body %}
 	<article>
-		<div class="meradata">Ecrit le
-			{{article.createdAt | date('d/m/Y')}}
-			à
-			{{ article.createdAt | date('H:i')}}
-			dans la catégorie
-			{{ article.category.title }}</div>
-		<h2>{{ article.title }}</h2>
-		<div class="content">
-			<img src={{ article.image }} alt="">
-			<br>
-			{{ article.content | raw}}
+		<div class="card border-danger m-3" style="max-width: 100%;">
+			<div class="card-header">Ecrit le
+				{{article.createdAt | date('d/m/Y')}}
+				à
+				{{ article.createdAt | date('H:i')}}
+				{{article.category.title}}
+			</div>
+			<div class="card-body">
+				<h2 class="card-title">{{ article.title }}</h2>
+				<img src={{ article.image }} alt="">
+				<p class="card-text">{{ article.content }}</p>
+				<a href="{{path('blog_edit', {'id' : article.id})}}">
+					<button class="btn btn-info">Modifier l'article</button>
+				</a>
+			</div>
 		</div>
-
-		<a href="{{path('blog_edit', {'id' : article.id})}}">
-			<button class="btn btn-info">Modifier l'article</button>
-		</a>
 	</article>
-    <section id="commentaire">
-        {% for comment in article.comments %}
-            <div class="comment">
-                <div class="row">
-                    <div class="col-3">
-                        {{comment.author}} (<small>{{comment.createdAt | date('d/m/Y à H:i')}}</small>)
-                    </div>
-                    <div class="col">
-                        {{comment.content | raw}}
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </section>
+
+	<section id="commentaire">
+		{% for comment in article.comments %}
+			<div class="card border-light mb-3">
+				<div class="card-header">{{comment.author}}
+					(<small>{{comment.createdAt | date('d/m/Y à H:i')}}</small>)</div>
+				<div class="card-body">
+					<div class="comment">
+						<div class="row">
+							<div class="col">
+								{{comment.content | raw}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
 
 {% endblock %}
