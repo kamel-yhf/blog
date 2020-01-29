@@ -1,0 +1,15 @@
+﻿{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Nouveau commentaire:</h1>
+
+{{ form_start(formComment) }}
+
+{{ form_row(formComment.author,{'attr':{'placehoder':"votre pseudo"}}) }}
+{{ form_row(formComment.content,{'attr':{'placehoder':"votre commentaire"}}) }}
+
+<button type="submit" class="btn btn-success">Ajouter</button>
+
+{{ form_end(formComment) }}
+
+{% endblock %}
