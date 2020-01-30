@@ -4,22 +4,25 @@
 {% endblock %}
 
 {% block body %}
-<section class="row text-justify">
-{% for article in articles %}
-        <article>
-            <div class="card border-danger m-3" style="max-width: 100%;">
-                <div class="card-header">Ecrit le {{article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}}
-                {{article.category.title}}
-                </div>
-                <div class="card-body">
-                    <h2 class="card-title">{{ article.title }}</h2>
-                    <img src={{ article.image }} alt="">
-                    <p class="card-text">{{ article.content }}</p>
-                    <a href="{{path('blog_show', {'id' : article.id})}}" class="btn btn-info">Lire la suite</a>
-                </div>
-            </div>
-        </article>
-        <br>
-{% endfor %}
-</section>
+	<section class="row text-justify">
+		{% for article in articles %}
+			<article>
+				<div class="card border-danger m-3" style="max-width: 100%;">
+					<div class="card-header">Ecrit le
+						{{article.createdAt | date('d/m/Y')}}
+						à
+						{{ article.createdAt | date('H:i')}}
+						{{article.category.title}}
+					</div>
+					<div class="card-body">
+						<h2 class="card-title">{{ article.title }}</h2>
+						<img src={{ article.image }} alt="">
+						<p class="card-text">{{ article.content }}</p>
+						<a href="{{path('blog_show', {'id' : article.id})}}" class="btn btn-info">Lire la suite</a>
+					</div>
+				</div>
+			</article>
+			<br>
+		{% endfor %}
+	</section>
 {% endblock %}

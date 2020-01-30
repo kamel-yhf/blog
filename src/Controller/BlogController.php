@@ -42,10 +42,19 @@ class BlogController extends AbstractController
 
     /**
     * @Route("/blog/new", name="blog_create")
-    *  @Route("/blog/{id}/edit", name="blog_edit")
+    * @Route("/blog/{id}/edit", name="blog_edit")
+    * @Route("/blog/{id}/delete", name="blog_delete")
     */
     public function form(Article $article = null, Request $request, EntityManagerInterface  $manager)
     {
+        $routeName = $request->attributes->get('_route');
+        if ($routeName == 'blog_delete') 
+        {
+            $manager->remove($article);
+            $manager->flush();
+            return $this->redirectToRoute('blog');
+        }
+        
         if(!$article){
             $article = new Article();
         }

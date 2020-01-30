@@ -4,29 +4,29 @@
 
 {% block body %}
 
-    {% if editMode %}
-             <h1>Modifier l'Article !</h1>
-        {% else %}
-             <h1>Creation d'un Article !</h1>
-        {% endif %}
-   
-    
-    {{ form_start(formArticle) }}
+	{% if editMode %}
+		<h1>Modifier l'Article !</h1>
+	{% else %}
+		<h1>Creation d'un Article !</h1>
+	{% endif %}
 
-    
-    {{ form_row(formArticle.title, {'attr':{'placeholder': "titre de l'article"}}) }}
-    {{ form_row(formArticle.category)}}
-    {{ form_row(formArticle.content, {'attr':{'placeholder': "contenu de l'article"}}) }}
-    {{ form_row(formArticle.image, {'attr':{'placeholder': "URL de l'image"}}) }}
 
-    <button type="submit" class="btn btn-info">
-        {% if editMode %}
-            Enregistrer les modification
-        {% else %}
-            Ajouter l'article
-        {% endif %}
-    </button>
+	{{ form_start(formArticle) }}
 
-    {{ form_end(formArticle) }}
+
+	{{ form_row(formArticle.title, {'attr':{'placeholder': "titre de l'article"}}) }}
+	{{ form_row(formArticle.category)}}
+	{{ form_row(formArticle.content, {'attr':{'placeholder': "contenu de l'article"}}) }}
+	{{ form_row(formArticle.image, {'attr':{'placeholder': "URL de l'image"}}) }}
+
+	<button type="submit" class="btn btn-info">
+		{% if editMode %}
+			Enregistrer les modification
+		{% else %}
+			Ajouter l'article
+		{% endif %}
+	</button>
+
+	{{ form_end(formArticle) }}
 
 {% endblock %}
