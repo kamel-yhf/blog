@@ -12,21 +12,28 @@
 				<h2 class="card-title">{{ article.title }}</h2>
 				<img src={{ article.image }} alt="">
 				<p class="card-text">{{ article.content }}</p>
-				<a href="{{path('blog_edit', {'id' : article.id})}}">
-					<button class="btn btn-warning">Modifier l'article</button>
-				</a>
-				<a href="{{path('blog_delete', {'id' : article.id})}}">
-					<button class="btn btn-danger">Supprimer l'article</button>
-				</a>
-				<a href="{{path('blog_com', {'id' : article.id})}}">
-					<button class="btn btn-primary">Ajouter un Commentaire</button>
-				</a>
+
+				{% if app.user %}
+					<a href="{{path('blog_edit', {'id' : article.id})}}">
+						<button class="btn btn-warning">Modifier l'article</button>
+					</a>
+					<a href="{{path('blog_delete', {'id' : article.id})}}">
+						<button class="btn btn-danger">Supprimer l'article</button>
+					</a>
+					<a href="{{path('blog_com', {'id' : article.id})}}">
+						<button class="btn btn-primary">Ajouter un Commentaire</button>
+					</a>
+				{% else %}
+					<h3>Vous devez êtres connecter pour commenter</h3>
+					<a class="btn btn-primary" href="{{path('security_login')}}">Connexion</a>
+				{% endif %}
 			</div>
 		</div>
 	</article>
 
 
 	<section id="commentaire">
+		<h2>{{ article.comments | length }} Commentaire:</h2>
 		{% for comment in article.comments %}
 			<div class="card border-light mb-3">
 				<div class="card-header">{{comment.author}}
